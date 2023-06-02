@@ -44,17 +44,21 @@ This dataset consists of tv shows and movies available on Netflix as of 2019. It
 - description: The Summary description
 
 # Project Overview:
-Netflix, is an American subscription streaming service and production company. It was founded in 1997 by Reed Hastings and Marc Randolph in Scott’s Valley, California.
+# Netflix Content Clustering and Recommender System
 
-It offers a library of films and television series through distribution deals as well as its own productions, known as Netflix Originals.
+Netflix is a popular streaming service that offers a vast collection of award-winning TV shows, movies, anime, documentaries, and more, accessible on various internet-connected devices. The profitability of this business model relies on users making monthly payments to access the platform. However, customers have the freedom to cancel their subscriptions at any time. Hence, it is crucial for the company to keep users engaged and prevent them from losing interest. This is where recommendation systems play a pivotal role by providing valuable suggestions to users.
 
-Our objective is to conduct an Exploratory Data Analysis to understand what content is available in different countries and if Netflix has been increasingly focusing on TV rather than movies in recent years. And use these insights to cluster similar content by matching text-based features.
+The aim of this project is to utilize K-means clustering and Agglomerative clustering techniques to form clusters based on Netflix content and subsequently build a simple recommender system.
 
-After loading the data, we start by observing the first and last five values to understand the dataset. Next, we treat the null values by replacing them with 0 if the respective variables contain <1% of null values. This is followed by feature engineering to extract new variables from the datetime variable date_added.
+In this project, I tackled a text clustering problem that involved classifying and grouping Netflix movies and shows into clusters based on their similarity. The dataset consisted of approximately 7787 records and 12 attributes. I began by addressing missing values in the dataset and performing exploratory data analysis (EDA). The analysis revealed that Netflix hosts more movies than TV shows and the number of shows and movies added to the platform is growing exponentially. Additionally, a majority of the shows were produced in the United States, and the content on Netflix primarily targets adults and teenagers.
 
-This cleaned data is then used to conduct EDA in order to understand it better and identify the underlying trends.
+After gaining valuable insights from the EDA, I proceeded to preprocess the text data by removing punctuation and stop words. The filtered data was then passed through a TF-IDF Vectorizer since we were conducting text-based clustering and the model required vectorized data to generate accurate predictions. The clustering was performed based on attributes such as director, cast, country, and description. The values in these attributes were tokenized, preprocessed, and vectorized using TF-IDF Vectorizer. This process resulted in a total of 20,000 attributes. To handle the curse of dimensionality, Principal Component Analysis (PCA) was employed. By selecting 5,000 components, over 95% of the variance was captured, thus limiting the number of components to 5,000.
 
-Once obtained the required insights from the EDA, we start with Pre-processing the text data by removing the punctuation, and, stop words. This filtered data is passed through TF - IDF Vectorizer since we are conducting a text-based clustering and the model needs the data to be vectorized in order to predict the desired results.
+Next, clusters were formed using the K-means clustering algorithm. The optimal number of clusters, which turned out to be 9, was determined through the elbow method and Silhouette score analysis. Additionally, clusters were created using the Agglomerative clustering algorithm, and the optimal number of clusters was found to be 11 by visualizing the dendrogram.
+
+To provide personalized recommendations, a simple content-based recommender system was built using the similarity matrix obtained through cosine similarity. This recommender system generates 10 recommendations for users based on the type of show they have watched.
+
+By leveraging clustering techniques and a content-based recommender system, this project contributes to enhancing the user experience on Netflix. The clusters help organize similar content, while the recommender system suggests personalized shows based on user preferences. This project demonstrates the effectiveness of machine learning in content analysis and recommendation systems, ultimately keeping users engaged and satisfied with their Netflix experience.
 
 Finally, K–Means clustering and hierarchical clustering is utilized to form 10 distinct clusters with similar data points.
 
